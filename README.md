@@ -4,7 +4,7 @@ App to test usage of OpenTelemetry with logs exporter and javaagent.
 
 ## Dependencies
 
-- Docker
+- [Docker 🐳](https://docs.docker.com/engine/install)
 
 ## Deployment
 

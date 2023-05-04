@@ -9,15 +9,18 @@
                 <pattern>
                     <pattern>
                         {
-                            "timestamp_app": "%d{YYYY-MM-dd'T'HH:mm:ss.SSSZ}",
-                            "level": "%level",
-                            "thread": "%thread",
-                            "service": "${applicationName:-}",
+                            "timestamp": "%d{YYYY-MM-dd'T'HH:mm:ss.SSSZ}",
                             "traceId": "%X{traceId:-}",
                             "spanId": "%X{spanId:-}",
-                            "class": "%logger{1000}",
-                            "message": "%message",
-                            "stack_trace": "%throwable"
+                            "severityText": "%level",
+                            "instrumentationScope": "%logger{1000}",
+                            "body": "%message",
+                            "resource": {
+                                "service": "${applicationName:-}"
+                            },
+                            "attributes": {
+                                "exception.stacktrace": "%throwable"
+                            }
                         }
                     </pattern>
                 </pattern>

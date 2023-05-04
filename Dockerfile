@@ -11,6 +11,7 @@ FROM openjdk:17-slim AS release
 COPY --from=build /home/gradle/build/libs/*.jar /app.jar
 COPY docker-entrypoint.sh /
 COPY otel/otel-javaagent.jar /
+COPY otel/otel-javaagent.properties /
 
 RUN chmod +x /docker-entrypoint.sh
 

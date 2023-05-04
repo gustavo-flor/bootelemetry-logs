@@ -27,6 +27,7 @@ class ExampleController {
     ) {
         MDC.put(ORIGIN_ID_HEADER, originId)
         logger.info("Hello World for {} at {}", kv(ORIGIN_NAME_HEADER, originName), now())
+        logger.debug("Let's debug that code")
     }
 
 }
