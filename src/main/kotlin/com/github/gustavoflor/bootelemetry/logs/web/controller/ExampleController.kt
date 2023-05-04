@@ -25,9 +25,10 @@ class ExampleController {
         @RequestHeader(ORIGIN_ID_HEADER) originId: String,
         @RequestHeader(ORIGIN_NAME_HEADER) originName: String
     ) {
-        MDC.put(ORIGIN_ID_HEADER, originId)
-        logger.info("Hello World for {} at {}", kv(ORIGIN_NAME_HEADER, originName), now())
-        logger.debug("Let's debug that code")
+        MDC.putCloseable(ORIGIN_ID_HEADER, originId).use {
+            logger.info("Hello World for {} at {}", kv(ORIGIN_NAME_HEADER, originName), now())
+            it.close()
+        }
     }
 
 }
