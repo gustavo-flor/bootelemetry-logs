@@ -3,7 +3,6 @@ package com.github.gustavoflor.bootelemetry.logs.web.controller
 import com.github.gustavoflor.bootelemetry.logs.web.HttpHeaders
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
-import org.slf4j.event.KeyValuePair
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
@@ -25,7 +24,12 @@ class ExampleController {
         @RequestHeader(HttpHeaders.ORIGIN_NAME_HEADER) originName: String
     ) {
         MDC.putCloseable(HttpHeaders.ORIGIN_ID_HEADER, originId).use {
-            logger.info("Hello World for {} at {}", KeyValuePair(HttpHeaders.ORIGIN_NAME_HEADER, originName), now())
+            logger.atInfo()
+                .addKeyValue(HttpHeaders.ORIGIN_NAME_HEADER, originName)
+                .log("Started example at {}", now())
+            logger.atInfo()
+                .addKeyValue(HttpHeaders.ORIGIN_NAME_HEADER, originName)
+                .log("Finished example at {}", now())
             it.close()
         }
     }
