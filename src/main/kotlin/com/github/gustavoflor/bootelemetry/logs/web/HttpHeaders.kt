@@ -1,6 +1,6 @@
 package com.github.gustavoflor.bootelemetry.logs.web
 
-class HttpHeaders {
+class HttpHeaders private constructor() {
 
     companion object {
 

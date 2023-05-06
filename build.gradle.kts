@@ -20,7 +20,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
-    implementation("net.logstash.logback:logstash-logback-encoder:7.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
