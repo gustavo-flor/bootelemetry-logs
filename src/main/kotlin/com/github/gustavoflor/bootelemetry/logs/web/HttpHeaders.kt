@@ -1,6 +1,6 @@
 package com.github.gustavoflor.bootelemetry.logs.web
 
-class ApiHeaders {
+class HttpHeaders {
 
     companion object {
 

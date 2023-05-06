@@ -1,7 +1,6 @@
 package com.github.gustavoflor.bootelemetry.logs.web.controller
 
-import com.github.gustavoflor.bootelemetry.logs.web.ApiHeaders.Companion.ORIGIN_ID_HEADER
-import com.github.gustavoflor.bootelemetry.logs.web.ApiHeaders.Companion.ORIGIN_NAME_HEADER
+import com.github.gustavoflor.bootelemetry.logs.web.HttpHeaders
 import net.logstash.logback.argument.StructuredArguments.kv
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
@@ -22,11 +21,11 @@ class ExampleController {
     @GetMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun example(
-        @RequestHeader(ORIGIN_ID_HEADER) originId: String,
-        @RequestHeader(ORIGIN_NAME_HEADER) originName: String
+        @RequestHeader(HttpHeaders.ORIGIN_ID_HEADER) originId: String,
+        @RequestHeader(HttpHeaders.ORIGIN_NAME_HEADER) originName: String
     ) {
-        MDC.putCloseable(ORIGIN_ID_HEADER, originId).use {
-            logger.info("Hello World for {} at {}", kv(ORIGIN_NAME_HEADER, originName), now())
+        MDC.putCloseable(HttpHeaders.ORIGIN_ID_HEADER, originId).use {
+            logger.info("Hello World for {} at {}", kv(HttpHeaders.ORIGIN_NAME_HEADER, originName), now())
             it.close()
         }
     }
